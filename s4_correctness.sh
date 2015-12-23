@@ -10,7 +10,7 @@
 
 #time to wait for S4 to complete its execution (in seconds)
 #(should be adapted depending on the size of the input file)
-time_to_finish=5
+time_to_finish=50000000
 
 #wait for all processes to initialize (2 seconds)
 init_time=2
@@ -25,7 +25,7 @@ make
 #delay packets with value from uniform [150ms-250ms] distribution
 #drop packets randomly with probability of 0.1 and correlation of 0.25
 
-sudo tc qdisc change dev lo root netem delay 200ms 50ms loss 10% 25% reorder 25% 50%
+sudo tc qdisc change dev lo root netem delay 200ms 50ms loss 20% 25% reorder 50% 50%
 
 #limits the memory allocation for verifying the garbage collection for input of size of atmax 20mb
 export JAVA_OPTS="-Xmx100m -Xms50m"

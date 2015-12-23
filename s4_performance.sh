@@ -6,7 +6,7 @@
 #
 
 #time to wait for S4 to complete its performance evaluation (in seconds)
-evaluation_time=5
+evaluation_time=50000
 
 #wait for all processes to initialize (2 seconds)
 init_time=2
