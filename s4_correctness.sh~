@@ -2,7 +2,7 @@
 #
 # Tests the correctness of S4 application.
 #
-# usage: source s4_correctness.sh
+# usage: sh s4_correctness.sh
 #
 # This is a sample script that demonstrates the test execution.
 # The details and parameters of the actual test might differ.
@@ -10,7 +10,7 @@
 
 #time to wait for S4 to complete its execution (in seconds)
 #(should be adapted depending on the size of the input file)
-time_to_finish=5
+time_to_finish=50000000
 
 #wait for all processes to initialize (2 seconds)
 init_time=2
@@ -25,7 +25,7 @@ make
 #delay packets with value from uniform [150ms-250ms] distribution
 #drop packets randomly with probability of 0.1 and correlation of 0.25
 
-sudo tc qdisc change dev lo root netem delay 200ms 50ms loss 10% 25% reorder 25% 50%
+sudo tc qdisc change dev lo root netem delay 200ms 50ms loss 20% 25% reorder 50% 50%
 
 #limits the memory allocation for verifying the garbage collection for input of size of atmax 20mb
 export JAVA_OPTS="-Xmx100m -Xms50m"
@@ -78,8 +78,3 @@ echo "Correctness test done."
 # Removes all .class files, so that the next make rebuilds them
 #
 make clean
-
-#call script to uninstall dependencies like (required) libraries (keep it empty if no dependencies required)
-if test -f "removal.sh"; then sh removal.sh;fi
-
-
