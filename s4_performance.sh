@@ -2,11 +2,11 @@
 #
 # Tests the performance of S4 application.
 #
-# usage: sh s4_performance.sh
+# usage: source s4_performance.sh
 #
 
 #time to wait for S4 to complete its performance evaluation (in seconds)
-evaluation_time=50000
+evaluation_time=5
 
 #wait for all processes to initialize (2 seconds)
 init_time=2
@@ -57,4 +57,7 @@ echo "Performance test done."
 # Removes all .class files, so that the next make rebuilds them
 #
 make clean
+
+#call script to uninstall dependencies like (required) libraries (keep it empty if no dependencies required)
+if test -f "removal.sh"; then sh removal.sh;fi
 
